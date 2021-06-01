@@ -18,7 +18,7 @@
 import Header from "../components/Header"
 import Company from "../components/Company"
 import PageHeader from "../components/PageHeader"
-import axios from "_axios@0.17.1@axios";
+import axios from "axios";
 
 export default {
   name: "About",

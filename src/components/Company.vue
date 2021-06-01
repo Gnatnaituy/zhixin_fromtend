@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Contact from "./Contact";
 
 export default {
@@ -37,7 +38,7 @@ export default {
 
   methods: {
     loadContacts() {
-      axios.get('/contact/list/', this.company.id).then(res => {
+      axios.get('/contact/list/' + this.company.id).then(res => {
         if (res.status === 200 && res.data.success === true) {
           this.contacts = res.data.data
           console.log(this.contacts)
