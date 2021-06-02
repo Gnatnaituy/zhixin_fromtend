@@ -1,31 +1,31 @@
 <template>
   <div id="menu">
-    <el-menu :default-active="this.$route.path" active-text-color="#000000" mode="horizontal">
+    <div class="logo-container">
+      <router-link :to="{name: 'Home'}">
+        <el-image style="width: 100%; height: 100%;" object-fit="cover" :src="'/images/logo/logo.jpeg'" />
+      </router-link>
+    </div>
+    <div class="menu-container">
+      <el-menu :default-active="this.$route.path" active-text-color="#000000" mode="horizontal">
+        <el-menu-item index="1">
+          <router-link :to="{name: 'Home'}">
+            首页
+          </router-link>
+        </el-menu-item>
 
-      <el-menu-item index="0">
-        <router-link :to="{name: 'Home'}">
-          <el-image style="width: 150px; height: 50px;" object-fit="cover" :src="'/images/logo/logo.jpeg'" />
-        </router-link>
-      </el-menu-item>
+        <el-menu-item v-for="(type, index) in moduleTypes" :key="index" :index="type.path">
+          <router-link :to="{name: 'Main', params: {typePath: type.path, typeId: type.id}}">
+            {{type.name}}
+          </router-link>
+        </el-menu-item>
 
-      <el-menu-item index="1">
-        <router-link :to="{name: 'Home'}">
-          首页
-        </router-link>
-      </el-menu-item>
-
-      <el-menu-item v-for="(type, index) in moduleTypes" :key="index" :index="type.path">
-        <router-link :to="{name: 'Main', params: {typePath: type.path, typeId: type.id}}">
-          {{type.name}}
-        </router-link>
-      </el-menu-item>
-
-      <el-menu-item index="100">
-        <router-link :to="{name: 'About'}">
-          联系我们
-        </router-link>
-      </el-menu-item>
-    </el-menu>
+        <el-menu-item index="100">
+          <router-link :to="{name: 'About'}">
+            联系我们
+          </router-link>
+        </el-menu-item>
+      </el-menu>
+    </div>
   </div>
 </template>
 
@@ -65,8 +65,20 @@ export default {
 </script>
 
 <style scoped>
-  #menu {
-    text-align: center;
-  }
+#menu {
+  display: flex;
+}
+.logo-container {
+  position: absolute;
+  z-index: 1;
+  width: 150px;
+  height: 60px;
+}
+
+.menu-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 </style>
