@@ -1,15 +1,21 @@
 <template>
   <div id="menu">
-    <el-menu :default-active="this.$route.path" active-text-color="#000000" router="true" mode="horizontal" @select="handleSelect">
+    <el-menu :default-active="this.$route.path" router active-text-color="#000000" mode="horizontal" @select="handleSelect">
+
       <el-menu-item index="0" route="/">
         <el-image style="width: 150px; height: 50px;" object-fit="cover" :src="'/images/logo/logo.jpeg'" />
       </el-menu-item>
+
       <el-menu-item index="1" route="/">
         首页
       </el-menu-item>
+
       <el-menu-item v-for="(type, index) in moduleTypes" :key="index" :index="type.path">
-        {{type.name}}
+        <router-link :to="{name: 'Main', params: {moduleType: type.path}}">
+          {{type.name}}
+        </router-link>
       </el-menu-item>
+
       <el-menu-item index="100" route="/about">
         联系我们
       </el-menu-item>
@@ -35,7 +41,7 @@ export default {
 
   methods: {
     handleSelect(key, keyPath) {
-      console.log(key + ":" + keyPath + "| router: "+ this.$route.path);
+
     },
     loadModuleTypes() {
       axios.get('/module_type/list').then(res => {

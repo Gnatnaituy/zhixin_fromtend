@@ -14,24 +14,14 @@ const router = new Router({
       component: Home,
     },
     {
-      path: '/product',
-      name: 'Product',
-      component: Main,
-    },
-    {
-      path: '/plan',
-      name: 'Plan',
-      component: Main,
-    },
-    {
-      path: '/news',
-      name: 'News',
-      component: Main,
-    },
-    {
       path: '/about',
       name: 'About',
       component: About,
+    },
+    {
+      path: '/:moduleType',
+      name: 'Main',
+      component: Main,
     }
   ]
 })

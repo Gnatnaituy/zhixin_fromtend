@@ -1,24 +1,32 @@
 <template>
-  <div>
+  <div id="group">
+
     <div id="group-header">
-      <span>产品介绍</span>
+      <span>{{ typeName }}</span>
     </div>
+
     <el-row :gutter="20">
-      <el-col :span="8" v-for="(o) in 6" :key="o">
-        <component-module />
+      <el-col :span="8" v-for="(module, key) in modules" :key="key">
+        <component-module-card v-bind:moduleCard="module"/>
       </el-col>
     </el-row>
+
   </div>
 </template>
 
 <script>
-import Module from '../components/Module'
+import ModuleCard from './ModuleCard'
 
 export default {
   name: "Group",
 
   components: {
-    "component-module": Module
+    "component-module-card": ModuleCard
+  },
+
+  props: {
+    typeName: {},
+    modules: []
   }
 }
 </script>

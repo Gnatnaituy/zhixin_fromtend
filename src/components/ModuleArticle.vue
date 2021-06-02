@@ -4,7 +4,11 @@
 
 <script>
 export default {
-  name: "Article"
+  name: "Article",
+
+  props: {
+    moduleArticle: {}
+  }
 }
 </script>
 

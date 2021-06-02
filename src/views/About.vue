@@ -1,9 +1,6 @@
 <template>
   <div>
     <div>
-      <el-row>
-        <component-header />
-      </el-row>
       <el-image style="width: 100%; height: 400px;" object-fit="cover"
         :src="'/images/2021/5/8b5c3f78eb8e41d8beb5d83692c4442b-t01e4c1a6fad8c7be4b.jpg'" />
       <component-page-header />
@@ -26,7 +23,7 @@ export default {
   components: {
     "component-header": Header,
     "component-company": Company,
-    "component-page-header": PageHeader,
+    "component-page-header": PageHeader
   },
 
   mounted() {

@@ -1,11 +1,26 @@
 <template>
   <div id="app">
+    <el-row>
+      <component-header />
+    </el-row>
     <router-view/>
+    <el-row>
+      <component-footer />
+    </el-row>
   </div>
 </template>
 
 <script>
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+
 export default {
+
+  components: {
+    "component-header": Header,
+    "component-footer": Footer
+  },
+
   created() {
     if (sessionStorage.getItem("state") !== null) {
       this.$store.replaceState(Object.assign({}, this.$store.state, JSON.parse(sessionStorage.getItem("state"))))

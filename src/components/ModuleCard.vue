@@ -1,12 +1,14 @@
 <template>
   <div id="module">
-    <div id="module-image" style="background: url('/images/2021/5/8b5c3f78eb8e41d8beb5d83692c4442b-t01e4c1a6fad8c7be4b.jpg') no-repeat center;" />
+    <div id="module-image">
+      <el-image :src="moduleCard.cover" />
+    </div>
     <div id="module-footer">
       <div id="module-name">
-        <span>自由高达</span>
+        <span>{{ moduleCard.title }}</span>
       </div>
       <div id="module-description">
-        <span>自由高达自由高达自由高达</span>
+        <span>{{ moduleCard.description }}</span>
       </div>
     </div>
   </div>
@@ -14,20 +16,29 @@
 
 <script>
 export default {
-  name: "Module",
+  name: "ModuleCard",
 
   data() {
     return {
       currentDate: new Date()
     };
+  },
+
+  props: {
+    moduleCard: {
+      cover: "",
+      title: "",
+      description: ""
+    }
   }
 }
 </script>
 
 <style scoped>
   #module {
+    background-color: #ffffff;
     border-bottom: 1px #d9d9d9 solid;
-    padding-top: 20px;
+    margin-top: 20px;
   }
   #module-image {
     width: 100%;

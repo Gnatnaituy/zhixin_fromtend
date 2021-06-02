@@ -4,7 +4,7 @@
       <span>{{ company.name }}</span>
     </div>
     <div id="company-description">
-      {{ company.description }}
+      <span>{{ company.description }}</span>
     </div>
     <div id="company-contact">
       <component-contact v-for="(contact, index) in contacts" v-bind:contact="contact" :key="index"/>
