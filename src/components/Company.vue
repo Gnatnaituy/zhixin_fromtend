@@ -7,7 +7,11 @@
       <span>{{ company.description }}</span>
     </div>
     <div id="company-contact">
-      <component-contact v-for="(contact, index) in contacts" v-bind:contact="contact" :key="index"/>
+      <el-row>
+        <el-col :span="12" v-for="(contact, index) in contacts" :key="index">
+          <component-contact  v-bind:contact="contact" />
+        </el-col>
+      </el-row>
     </div>
     <div id="company-divider">
       <el-divider/>
@@ -16,7 +20,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import Contact from "./Contact";
 
 export default {
@@ -26,29 +29,9 @@ export default {
     "component-contact": Contact
   },
 
-  mounted() {
-    this.loadContacts()
-  },
-
-  data() {
-    return {
-      contacts: []
-    }
-  },
-
-  methods: {
-    loadContacts() {
-      axios.get('/contact/list/' + this.company.id).then(res => {
-        if (res.status === 200 && res.data.success === true) {
-          this.contacts = res.data.data
-          console.log(this.contacts)
-        }
-      })
-    }
-  },
-
   props: {
-    company: {}
+    company: {},
+    contacts: []
   }
 }
 </script>
@@ -56,7 +39,7 @@ export default {
 <style scoped>
  #company {
    text-align: center;
-   margin-top: 40px;
+   margin-top: 80px;
    color: #4a4a4a;
  }
  #company-name {
@@ -66,10 +49,10 @@ export default {
    width: 60%;
    display: inline-block;
    font-size: 14px;
-   margin-top: 30px;
+   margin-top: 60px;
  }
  #company-contact {
-   padding-top: 30px;;
+   margin-top: 60px;
    width: 40%;
    display: inline-block;
  }

@@ -6,7 +6,9 @@
       <component-page-header />
     </div>
     <div>
-      <component-company v-for="(company, index) in companies" v-bind:company="company" :key="index"/>
+      <component-company v-for="(company, index) in companies" :key="index"
+                         v-bind:company="company"
+                         v-bind:contacts="company.contacts"/>
     </div>
   </div>
 </template>

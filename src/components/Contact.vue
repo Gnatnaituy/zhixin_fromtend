@@ -1,8 +1,18 @@
 <template>
   <div id="contact">
-    <div id="title">{{contact.title}}</div>
-    <div id="info">
-      <span v-for="(item, index) in contact.items" :key="index">{{ item }}</span>
+    <el-row>
+      <el-col>
+        <div id="title">{{contact.title}}</div>
+      </el-col>
+    </el-row>
+    <div id="items">
+      <el-row>
+        <el-col>
+          <div id="item" v-for="(item, index) in contact.items" :key="index">
+            <span >{{ item.name }}: {{ item.value }}</span>
+          </div>
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
@@ -22,12 +32,16 @@ export default {
 
  }
  #title {
-   font-size: 20px;
+   margin-bottom: 10px;
+   font-size: 16px;
    display: inline-block;
  }
- #info {
+ #items {
    align-content: center;
    font-size: 14px;
    display: inline-block;
+ }
+ #item {
+   margin-bottom: 5px;
  }
 </style>
