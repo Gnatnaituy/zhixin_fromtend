@@ -1,13 +1,17 @@
 <template>
   <div id="menu">
-    <el-menu :default-active="this.$route.path" router active-text-color="#000000" mode="horizontal" @select="handleSelect">
+    <el-menu :default-active="this.$route.path" active-text-color="#000000" mode="horizontal">
 
-      <el-menu-item index="0" route="/">
-        <el-image style="width: 150px; height: 50px;" object-fit="cover" :src="'/images/logo/logo.jpeg'" />
+      <el-menu-item index="0">
+        <router-link :to="{name: 'Home'}">
+          <el-image style="width: 150px; height: 50px;" object-fit="cover" :src="'/images/logo/logo.jpeg'" />
+        </router-link>
       </el-menu-item>
 
-      <el-menu-item index="1" route="/">
-        首页
+      <el-menu-item index="1">
+        <router-link :to="{name: 'Home'}">
+          首页
+        </router-link>
       </el-menu-item>
 
       <el-menu-item v-for="(type, index) in moduleTypes" :key="index" :index="type.path">
@@ -16,8 +20,10 @@
         </router-link>
       </el-menu-item>
 
-      <el-menu-item index="100" route="/about">
-        联系我们
+      <el-menu-item index="100">
+        <router-link :to="{name: 'About'}">
+          联系我们
+        </router-link>
       </el-menu-item>
     </el-menu>
   </div>
@@ -28,6 +34,13 @@ import axios from "axios";
 
 export default {
   name: "Header",
+
+  watch: {
+    $route(to, from) {
+      console.log("from: ", from.path)
+      console.log("to: ", to.path)
+    }
+  },
 
   data() {
     return {
@@ -40,9 +53,6 @@ export default {
   },
 
   methods: {
-    handleSelect(key, keyPath) {
-
-    },
     loadModuleTypes() {
       axios.get('/module_type/list').then(res => {
         if (res.status === 200 && res.data.success === true) {

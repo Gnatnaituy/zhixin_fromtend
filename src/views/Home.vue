@@ -42,7 +42,6 @@ export default {
       axios.get('/module_type/list/in-home').then(res => {
         if (res.status === 200 && res.data.success === true) {
           this.typeModules = res.data.data
-          console.log(this.typeModules)
         }
       })
     }

@@ -13,7 +13,7 @@
 import Header from "../components/Header"
 import PageHeader from "../components/PageHeader"
 import Footer from "../components/Footer"
-import axios from "_axios@0.17.1@axios";
+import axios from "axios";
 
 export default {
   name: "Main",
@@ -32,14 +32,12 @@ export default {
 
   data() {
     return {
-      // path: this.$route.params.moduleTypePath
       moduleType: {}
     }
   },
 
   methods: {
     loadModuleType(id) {
-      console.log("loadModuleType")
       axios.get('/module_type/detail/' + id).then(res => {
         if (res.status === 200 && res.data.success === true) {
           this.moduleType = res.data.data

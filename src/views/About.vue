@@ -43,7 +43,6 @@ export default {
       axios.get('/company/list').then(res => {
         if (res.status === 200 && res.data.success === true) {
           this.companies = res.data.data
-          console.log(this.companies)
         }
       })
     }

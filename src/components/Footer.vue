@@ -1,14 +1,14 @@
 <template>
   <div id="footer">
     <el-row>
-      <el-col :offset="3" :span="18">
+      <el-col :offset="6" :span="12">
         <div id="footer-company">
           <span>{{company}}</span>
         </div>
       </el-col>
     </el-row>
     <el-row>
-      <el-col :offset="3" :span="18">
+      <el-col :offset="6" :span="12">
         <div id="footer-contact" v-for="(contact, index) in contacts" :key="index">
           <span>{{contact}}</span>
         </div>
