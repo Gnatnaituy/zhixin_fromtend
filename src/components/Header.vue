@@ -15,7 +15,7 @@
       </el-menu-item>
 
       <el-menu-item v-for="(type, index) in moduleTypes" :key="index" :index="type.path">
-        <router-link :to="{name: 'Main', params: {path: type.path, id: type.id}}">
+        <router-link :to="{name: 'Main', params: {typePath: type.path, typeId: type.id}}">
           {{type.name}}
         </router-link>
       </el-menu-item>

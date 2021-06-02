@@ -19,7 +19,7 @@ const router = new Router({
       component: About,
     },
     {
-      path: '/:path',
+      path: '/:typePath',
       name: 'Main',
       component: Main,
     }
