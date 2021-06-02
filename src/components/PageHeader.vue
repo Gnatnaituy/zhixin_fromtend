@@ -2,7 +2,7 @@
   <el-row>
     <el-col :offset="3" :span="18">
       <div id="page-header">
-        <span>联系我们</span>
+        <span>{{ title }}</span>
       </div>
     </el-col>
   </el-row>
@@ -10,7 +10,11 @@
 
 <script>
 export default {
-  name: "PageHeader"
+  name: "PageHeader",
+
+  props: {
+    title: ""
+  }
 }
 </script>
 
@@ -18,9 +22,9 @@ export default {
 
 #page-header {
   text-align: center;
-  padding: 15px;
+  padding: 24px;
   background: #ffffff;
-  margin-top: -64px;
+  margin-top: -80px;
   font-size: 20px;
   color: #515151;
   border-radius: 2px;

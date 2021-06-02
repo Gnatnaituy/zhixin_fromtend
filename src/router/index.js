@@ -19,7 +19,7 @@ const router = new Router({
       component: About,
     },
     {
-      path: '/:moduleType',
+      path: '/:path',
       name: 'Main',
       component: Main,
     }
