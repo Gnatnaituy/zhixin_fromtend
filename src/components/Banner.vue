@@ -1,5 +1,5 @@
 <template>
-  <el-carousel height="600px" arrow="cover">
+  <el-carousel :height="bannerHeight + 'px'" arrow="cover">
     <el-carousel-item v-for="banner in banners" :key="banner.id">
       <el-image v-bind:src="banner.image" object-fit="cover" />
     </el-carousel-item>
@@ -14,12 +14,14 @@ export default {
 
   data() {
     return {
+      bannerHeight: 600,
       banners: []
     }
   },
 
   mounted() {
     this.loadBanners()
+    this.bannerHeight = window.innerHeight - 60;
   },
 
   methods: {

@@ -53,7 +53,7 @@ export default {
   }
   #module-image {
     width: 100%;
-    height: 160px;
+    height: auto;
     background-size: cover;
     overflow: hidden;
   }
