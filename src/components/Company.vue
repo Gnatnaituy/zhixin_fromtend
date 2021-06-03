@@ -37,7 +37,6 @@ export default {
  #company {
    margin: 30px 0;
    text-align: center;
-   color: #4a4a4a;
  }
  #company-name {
    font-size: 22px;

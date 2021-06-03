@@ -61,7 +61,7 @@ export default {
     text-align: center;
   }
   #company-divider {
-    width: 50%;
+    width: 33%;
     display: inline-block;
   }
 </style>

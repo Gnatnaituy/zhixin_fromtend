@@ -3,12 +3,21 @@
     <el-row>
       <el-col :offset="4" :span="4">
         <div id="sub-type">
+          <div>
+            <a :class="{ active: subTypeId === null }"
+               v-on:click="loadModules(null, 1)" >
+              全部
+            </a>
+            <div class="sub-type-divider">
+              <el-divider/>
+            </div>
+          </div>
           <div v-for="(subType, index) in moduleSubTypes" :key="index">
-            <a v-on:click="loadModules(subType.moduleTypeId, subType.id, index, 1)"
-               :class="{ active: subTypeIndex === index }">
+            <a :class="{ active: subTypeId === subType.id }"
+               v-on:click="loadModules(subType.id, 1)">
               {{ subType.name }}
             </a>
-            <div id="sub-type-divider">
+            <div class="sub-type-divider">
               <el-divider/>
             </div>
           </div>
@@ -58,7 +67,6 @@ export default {
       subTypeId: null,
       pageIndex: 1,
       pageSize: 12,
-      subTypeIndex: 0,
       moduleSubTypes: [],
       modules: {}
     }
@@ -67,8 +75,8 @@ export default {
   watch: {
     $route(to, from) {
       this.typeId = to.params.typeId;
-      this.loadModuleSubTypes(this.typeId, null, null)
-      this.loadModules(this.typeId)
+      this.loadModuleSubTypes(this.typeId)
+      this.loadModules(null, 1)
     }
   },
 
@@ -80,11 +88,9 @@ export default {
         }
       })
     },
-    loadModules(typeId, subTypeId, index, pageIndex) {
-      this.typeId = typeId === null ? this.typeId : typeId
-      this.subTypeId = subTypeId === null ? this.subTypeId : subTypeId
-      this.subTypeIndex = index === null ? this.subTypeIndex : index
-      this.pageIndex = pageIndex === null ? this.pageIndex : pageIndex
+    loadModules(subTypeId, pageIndex) {
+      this.subTypeId = subTypeId
+      this.pageIndex = pageIndex
       axios.post('/module/list', {
         typeId: this.typeId,
         subTypeId: this.subTypeId,
@@ -101,7 +107,7 @@ export default {
     },
     pageIndexChange(currentPage) {
       this.pageIndex = currentPage
-      this.loadModules(null, null, null, null)
+      this.loadModules(this.subTypeId, this.pageIndex)
     }
   }
 }
@@ -115,7 +121,7 @@ export default {
    margin-top: 20px;
    font-size: 14px;
  }
- #sub-type-divider {
+ .sub-type-divider {
    width: 85%;
    margin-top: -15px;
  }
