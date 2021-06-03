@@ -5,10 +5,13 @@
         :src="'/images/2021/5/8b5c3f78eb8e41d8beb5d83692c4442b-t01e4c1a6fad8c7be4b.jpg'" />
       <component-page-header title="联系我们" />
     </div>
-    <div>
-      <component-company v-for="(company, index) in companies" :key="index"
-                         v-bind:company="company"
-                         v-bind:contacts="company.contacts"/>
+    <div id="container-about">
+      <div id="container-company" v-for="(company, index) in companies" :key="index">
+        <component-company v-bind:company="company" v-bind:contacts="company.contacts" />
+        <div v-if="index !== companies.length - 1" id="company-divider">
+          <el-divider/>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -51,5 +54,14 @@ export default {
 </script>
 
 <style scoped>
-
+ #container-about {
+   padding-top: 60px;
+ }
+  #container-company {
+    text-align: center;
+  }
+  #company-divider {
+    width: 50%;
+    display: inline-block;
+  }
 </style>

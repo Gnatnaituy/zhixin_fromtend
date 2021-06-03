@@ -8,13 +8,10 @@
     </div>
     <div id="company-contact">
       <el-row>
-        <el-col :span="12" v-for="(contact, index) in contacts" :key="index">
+        <el-col :span="24 / contacts.length" v-for="(contact, index) in contacts" :key="index">
           <component-contact  v-bind:contact="contact" />
         </el-col>
       </el-row>
-    </div>
-    <div id="company-divider">
-      <el-divider/>
     </div>
   </div>
 </template>
@@ -38,27 +35,24 @@ export default {
 
 <style scoped>
  #company {
+   margin: 30px 0;
    text-align: center;
-   margin-top: 80px;
    color: #4a4a4a;
  }
  #company-name {
    font-size: 22px;
  }
  #company-description {
+   margin: 30px 0;
    width: 60%;
    display: inline-block;
    font-size: 14px;
-   margin-top: 60px;
  }
  #company-contact {
-   margin-top: 60px;
-   width: 40%;
+   margin-top: 30px;
+   width: 50%;
    display: inline-block;
- }
- #company-divider {
-   width: 75%;
-   display: inline-block;
+   align-content: center;
  }
 
 </style>
