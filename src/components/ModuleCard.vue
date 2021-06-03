@@ -3,14 +3,25 @@
     <div id="module-image">
       <el-image :src="moduleCard.cover" />
     </div>
-    <div id="module-footer">
-      <div id="module-name">
-        <span>{{ moduleCard.title }}</span>
-      </div>
-      <div id="module-description">
-        <span>{{ moduleCard.description }}</span>
-      </div>
-    </div>
+    <el-row>
+      <el-col :span="18">
+        <div id="module-footer">
+          <div id="module-name">
+            <span>{{ moduleCard.title }}</span>
+          </div>
+          <div id="module-description">
+            <span>{{ moduleCard.description }}</span>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <el-row>
+          <el-col :offset="8" :span="8">
+            <i class="el-icon-right" style="font-weight: bold; padding-top: 20px; color: #9b9b9b"/>
+          </el-col>
+        </el-row>
+      </el-col>
+    </el-row>
   </div>
 </template>
 

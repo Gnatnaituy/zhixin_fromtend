@@ -6,7 +6,9 @@
       </router-link>
     </div>
     <div class="menu-container">
-      <el-menu :default-active="this.$route.path" active-text-color="#000000" mode="horizontal">
+      <el-menu :default-active="this.$route.path"
+               active-text-color="#48a2fe"
+               mode="horizontal">
         <el-menu-item index="1">
           <router-link :to="{name: 'Home'}">
             首页
