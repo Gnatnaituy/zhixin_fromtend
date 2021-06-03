@@ -37,13 +37,14 @@ export default {
 
   watch: {
     $route(to, from) {
-      console.log("from: ", from.path)
-      console.log("to: ", to.path)
+      this.clickCount += 1
+      console.log("clickCount: ", this.clickCount, " | from: ", from.path, " | to: ", to.path)
     }
   },
 
   data() {
     return {
+      clickCount: 0,
       moduleTypes: []
     };
   },

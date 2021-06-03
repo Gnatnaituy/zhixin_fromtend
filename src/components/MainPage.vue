@@ -4,7 +4,9 @@
       <el-col :offset="4" :span="4">
         <div id="sub-type">
           <div v-for="(subType, index) in moduleSubTypes" :key="index">
-            <a v-on:click="loadModules(subType.moduleTypeId, subType.id)">{{ subType.name }}</a>
+            <a v-on:click="loadModules(subType.moduleTypeId, subType.id, index)" :class="{ active: current === index }">
+              {{ subType.name }}
+            </a>
             <div id="sub-type-divider">
               <el-divider/>
             </div>
@@ -36,6 +38,7 @@ export default {
 
   data() {
     return {
+      current: 0,
       moduleSubTypes: [],
       modules: []
     }
@@ -57,7 +60,8 @@ export default {
         }
       })
     },
-    loadModules(typeId, subTypeId) {
+    loadModules(typeId, subTypeId, index) {
+      this.current = index
       axios.post('/module/list', {
         typeId: typeId,
         subTypeId: subTypeId
@@ -82,6 +86,9 @@ export default {
  #sub-type-divider {
    width: 85%;
    margin-top: -15px;
+ }
+ .active{
+   color: #87cefa;
  }
 
 </style>
