@@ -8,23 +8,21 @@
     <div class="menu-container">
       <el-menu :default-active="this.$route.path"
                active-text-color="#48a2fe"
-               mode="horizontal">
-        <el-menu-item index="1">
-          <router-link :to="{name: 'Home'}">
-            首页
-          </router-link>
+               mode="horizontal" router>
+
+        <el-menu-item index="/" route="/">
+          首页
         </el-menu-item>
 
-        <el-menu-item v-for="(type, index) in moduleTypes" :key="index" :index="type.path">
-          <router-link :to="{name: 'Main', params: {typePath: type.path, typeId: type.id}}">
-            {{type.name}}
-          </router-link>
+        <el-menu-item v-for="(type, index) in moduleTypes"
+                      :key="index"
+                      :index="'/' + type.path"
+                      :route="'/' + type.path">
+          {{ type.name }}
         </el-menu-item>
 
-        <el-menu-item index="100">
-          <router-link :to="{name: 'About'}">
-            联系我们
-          </router-link>
+        <el-menu-item index="/about" route="/about">
+          联系我们
         </el-menu-item>
       </el-menu>
     </div>
@@ -36,13 +34,6 @@ import axios from "axios";
 
 export default {
   name: "Header",
-
-  watch: {
-    $route(to, from) {
-      this.clickCount += 1
-      console.log("clickCount: ", this.clickCount, " | from: ", from.path, " | to: ", to.path)
-    }
-  },
 
   data() {
     return {

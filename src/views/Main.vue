@@ -30,9 +30,12 @@ export default {
 
   watch: {
     $route(to, from) {
-      const typeId = to.params.typeId;
-      this.loadModuleType(typeId)
+      this.loadModuleTypeDetail(this.$route.params.typePath)
     }
+  },
+
+  mounted() {
+    this.loadModuleTypeDetail(this.$route.params.typePath)
   },
 
   data() {
@@ -42,8 +45,8 @@ export default {
   },
 
   methods: {
-    loadModuleType(id) {
-      axios.get('/module_type/detail/' + id).then(res => {
+    loadModuleTypeDetail(path) {
+      axios.get('/module_type/detail_by_path/' + path).then(res => {
         if (res.status === 200 && res.data.success === true) {
           this.moduleType = res.data.data
         }

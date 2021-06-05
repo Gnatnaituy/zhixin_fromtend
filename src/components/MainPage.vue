@@ -74,33 +74,68 @@ export default {
 
   watch: {
     $route(to, from) {
-      this.typeId = to.params.typeId;
-      this.loadModuleSubTypes(this.typeId)
-      this.loadModules(null, 1)
+      this.subTypeId = null
+      axios.get('/module_type/detail_by_path/' + this.$route.params.typePath).then(res => {
+        if (res.status === 200 && res.data.success === true) {
+          this.typeId = res.data.data.id
+          axios.get('/module_sub_type/list/' + this.typeId).then(res => {
+            if (res.status === 200 && res.data.success === true) {
+              this.moduleSubTypes = res.data.data
+              axios.post('/module/list', {
+                typeId: this.typeId,
+                pageLength: 12
+              }).then(res => {
+                if (res.status === 200 && res.data.success === true) {
+                  this.modules = res.data.data
+                }
+              })
+            }
+          })
+        }
+      })
     }
   },
 
+  mounted() {
+    axios.get('/module_type/detail_by_path/' + this.$route.params.typePath).then(res => {
+      if (res.status === 200 && res.data.success === true) {
+        this.typeId = res.data.data.id
+        axios.get('/module_sub_type/list/' + this.typeId).then(res => {
+          if (res.status === 200 && res.data.success === true) {
+            this.moduleSubTypes = res.data.data
+            axios.post('/module/list', {
+              typeId: this.typeId,
+              pageLength: 12
+            }).then(res => {
+              if (res.status === 200 && res.data.success === true) {
+                this.modules = res.data.data
+              }
+            })
+          }
+        })
+      }
+    })
+  },
+
   methods: {
-    loadModuleSubTypes(id) {
-      axios.get('/module_sub_type/list/' + id).then(res => {
-        if (res.status === 200 && res.data.success === true) {
-          this.moduleSubTypes = res.data.data
-        }
-      })
+    async loadModuleTypeDetail(path) {
+      let res = await axios.get('/module_type/detail_by_path/' + path)
+      if (res.status === 200 && res.data.success === true) {
+        this.typeId = res.data.data.id
+      }
     },
-    loadModules(subTypeId, pageIndex) {
+    async loadModules(subTypeId, pageIndex) {
       this.subTypeId = subTypeId
       this.pageIndex = pageIndex
-      axios.post('/module/list', {
+      let res = await axios.post('/module/list', {
         typeId: this.typeId,
         subTypeId: this.subTypeId,
         pageStart: this.pageIndex,
         pageLength: 12
-      }).then(res => {
-        if (res.status === 200 && res.data.success === true) {
-          this.modules = res.data.data
-        }
       })
+      if (res.status === 200 && res.data.success === true) {
+        this.modules = res.data.data
+      }
     },
     pageSizeChange() {
 
