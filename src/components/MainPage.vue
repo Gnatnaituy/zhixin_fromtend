@@ -4,8 +4,7 @@
       <el-col :offset="4" :span="4">
         <div id="sub-type">
           <div>
-            <a :class="{ active: subTypeId === null }"
-               v-on:click="loadModules(null, 1)" >
+            <a :class="{ active: subTypeId === null }" v-on:click="loadModules(null, 1)" >
               全部
             </a>
             <div class="sub-type-divider">
@@ -13,8 +12,7 @@
             </div>
           </div>
           <div v-for="(subType, index) in moduleSubTypes" :key="index">
-            <a :class="{ active: subTypeId === subType.id }"
-               v-on:click="loadModules(subType.id, 1)">
+            <a :class="{ active: subTypeId === subType.id }" v-on:click="loadModules(subType.id, 1)">
               {{ subType.name }}
             </a>
             <div class="sub-type-divider">

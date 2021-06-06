@@ -21,7 +21,7 @@
           {{ type.name }}
         </el-menu-item>
 
-        <el-menu-item index="/about" route="/about">
+        <el-menu-item index="/contact" route="/contact">
           联系我们
         </el-menu-item>
       </el-menu>

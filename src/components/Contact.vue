@@ -37,9 +37,9 @@ export default {
    display: inline-block;
  }
  #items {
-   align-content: center;
+   padding-left: 30%;
+   text-align: left;
    font-size: 14px;
-   display: inline-block;
  }
  #item {
    margin-bottom: 5px;

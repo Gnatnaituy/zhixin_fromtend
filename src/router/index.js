@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from "../views/Home"
 import Main from "../views/Main"
-import About from "../views/About"
+import ContactUs from "../views/ContactUs"
 
 Vue.use(Router)
 
@@ -14,9 +14,9 @@ const router = new Router({
       component: Home,
     },
     {
-      path: '/about',
-      name: 'About',
-      component: About,
+      path: '/contact',
+      name: 'ContactUs',
+      component: ContactUs,
     },
     {
       path: '/:typePath',
