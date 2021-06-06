@@ -22,6 +22,16 @@ const router = new Router({
       path: '/:typePath',
       name: 'Main',
       component: Main,
+    },
+    {
+      path: '/:typePath/:subTypeId',
+      name: 'Main',
+      component: Main,
+    },
+    {
+      path: '/:typePath/:subTypeId/:moduleId',
+      name: 'Module',
+      component: Main,
     }
   ]
 })

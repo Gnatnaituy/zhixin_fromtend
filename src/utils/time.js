@@ -14,9 +14,7 @@ export function formatTime(time) {
     const d = new Date(time)
     const month = d.getMonth() < 10 ? '0' + d.getMonth() : d.getMonth()
     const day = d.getDay() < 9 ? '0' + (d.getDay() + 1) : d.getDay() + 1
-    const minutes = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes()
-    const seconds = d.getSeconds() < 10 ? '0' + d.getSeconds() : d.getSeconds()
 
-    return d.getFullYear() + '/' + month + '/' + day + ' ' + d.getHours() + ':' + minutes + ':' + seconds
+    return d.getFullYear() + '年' + month + '月' + day + '日'
   }
 }
