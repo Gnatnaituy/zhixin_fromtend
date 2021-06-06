@@ -3,8 +3,9 @@
     <el-row>
       <el-col :offset="4" :span="4">
         <div id="sub-type">
-          <div>
-            <a :class="{ active: subTypeId === null }" v-on:click="loadModules(null, 1)" >
+          <div v-if="type.showSubTypeAll === '1'">
+            <a :class="{ active: subTypeId === null }"
+               v-on:click="loadModules(null, 1)" >
               全部
             </a>
             <div class="sub-type-divider">
@@ -61,7 +62,7 @@ export default {
 
   data() {
     return {
-      typeId: null,
+      type: {},
       subTypeId: null,
       pageIndex: 1,
       pageSize: 12,
@@ -75,12 +76,12 @@ export default {
       this.subTypeId = null
       axios.get('/module_type/detail_by_path/' + this.$route.params.typePath).then(res => {
         if (res.status === 200 && res.data.success === true) {
-          this.typeId = res.data.data.id
-          axios.get('/module_sub_type/list/' + this.typeId).then(res => {
+          this.type = res.data.data
+          axios.get('/module_sub_type/list/' + this.type.id).then(res => {
             if (res.status === 200 && res.data.success === true) {
               this.moduleSubTypes = res.data.data
               axios.post('/module/list', {
-                typeId: this.typeId,
+                typeId: this.type.id,
                 pageLength: 12
               }).then(res => {
                 if (res.status === 200 && res.data.success === true) {
@@ -97,12 +98,12 @@ export default {
   mounted() {
     axios.get('/module_type/detail_by_path/' + this.$route.params.typePath).then(res => {
       if (res.status === 200 && res.data.success === true) {
-        this.typeId = res.data.data.id
-        axios.get('/module_sub_type/list/' + this.typeId).then(res => {
+        this.type = res.data.data
+        axios.get('/module_sub_type/list/' + this.type.id).then(res => {
           if (res.status === 200 && res.data.success === true) {
             this.moduleSubTypes = res.data.data
             axios.post('/module/list', {
-              typeId: this.typeId,
+              typeId: this.type.id,
               pageLength: 12
             }).then(res => {
               if (res.status === 200 && res.data.success === true) {
@@ -119,14 +120,14 @@ export default {
     async loadModuleTypeDetail(path) {
       let res = await axios.get('/module_type/detail_by_path/' + path)
       if (res.status === 200 && res.data.success === true) {
-        this.typeId = res.data.data.id
+        this.type = res.data.data
       }
     },
     async loadModules(subTypeId, pageIndex) {
       this.subTypeId = subTypeId
       this.pageIndex = pageIndex
       let res = await axios.post('/module/list', {
-        typeId: this.typeId,
+        typeId: this.type.id,
         subTypeId: this.subTypeId,
         pageStart: this.pageIndex,
         pageLength: 12
