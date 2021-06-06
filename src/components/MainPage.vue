@@ -24,26 +24,37 @@
       </el-col>
 
       <el-col :span="12">
-        <el-row :gutter="20">
-          <el-col :span="8" v-for="(module, key) in modules.records" :key="key">
-            <component-module-card v-bind:moduleCard="module"/>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="24">
-            <div id="module-pager">
-              <el-pagination background hide-on-single-page
-                layout="prev, pager, next"
-                :total="modules.total"
-                :current-page="pageIndex"
-                :page-size="pageSize"
-                :page-sizes="[6, 9, 12, 15]"
-                v-on:size-change="pageSizeChange"
-                v-on:current-change="this.pageIndexChange">
-              </el-pagination>
-            </div>
-          </el-col>
-        </el-row>
+        <div v-if="modules.total > 0">
+          <el-row :gutter="20">
+            <el-col :span="8" v-for="(module, key) in modules.records" :key="key">
+              <component-module-card v-bind:moduleCard="module"/>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="24">
+              <div id="module-pager">
+                <el-pagination background hide-on-single-page
+                               layout="prev, pager, next"
+                               :total="modules.total"
+                               :current-page="pageIndex"
+                               :page-size="pageSize"
+                               :page-sizes="[6, 9, 12, 15]"
+                               v-on:size-change="pageSizeChange"
+                               v-on:current-change="this.pageIndexChange">
+                </el-pagination>
+              </div>
+            </el-col>
+          </el-row>
+        </div>
+        <div class="module-none" v-else>
+          <el-row>
+            <el-col :offset="7" :span="16">
+              <div>
+                <span>暂无内容</span>
+              </div>
+            </el-col>
+          </el-row>
+        </div>
       </el-col>
     </el-row>
   </div>
@@ -164,6 +175,11 @@ export default {
    width: 100%;
    display: flex;
    justify-content: center;
+ }
+ .module-none {
+   color: #9b9b9b;
+   padding: 100px 0;
+   text-align: left;
  }
  .active{
    color: #48a2fe;

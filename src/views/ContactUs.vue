@@ -28,13 +28,22 @@
       </el-col>
 
       <el-col :span="12">
-        <div id="container-contact" v-if="activeIndex === 0">
+        <div v-if="activeIndex === 0" id="container-contact">
           <div id="container-company" v-for="(company, index) in companies" :key="index">
             <component-company v-bind:company="company" v-bind:contacts="company.contacts" />
             <div v-if="index !== companies.length - 1" id="company-divider">
               <el-divider/>
             </div>
           </div>
+        </div>
+        <div v-else class="module-none">
+          <el-row>
+            <el-col :offset="7" :span="17">
+              <div>
+                <span>暂无内容</span>
+              </div>
+            </el-col>
+          </el-row>
         </div>
       </el-col>
     </el-row>
@@ -63,7 +72,8 @@ export default {
   data() {
     return {
       activeIndex: 0,
-      companies: []
+      companies: [],
+      jobs: null
     }
   },
 
@@ -106,6 +116,11 @@ export default {
  .sub-type-divider {
    width: 85%;
    margin-top: -15px;
+ }
+ .module-none {
+   color: #9b9b9b;
+   padding: 100px 0;
+   text-align: left;
  }
  .active{
    color: #48a2fe;
