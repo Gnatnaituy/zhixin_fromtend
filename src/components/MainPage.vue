@@ -80,8 +80,11 @@ export default {
           axios.get('/module_sub_type/list/' + this.type.id).then(res => {
             if (res.status === 200 && res.data.success === true) {
               this.moduleSubTypes = res.data.data
+              this.subTypeId = this.type.showSubTypeAll === '1' ? null :
+                this.moduleSubTypes.length > 0 ? this.moduleSubTypes[0].id : null;
               axios.post('/module/list', {
                 typeId: this.type.id,
+                subTypeId: this.subTypeId,
                 pageLength: 12
               }).then(res => {
                 if (res.status === 200 && res.data.success === true) {
@@ -102,8 +105,11 @@ export default {
         axios.get('/module_sub_type/list/' + this.type.id).then(res => {
           if (res.status === 200 && res.data.success === true) {
             this.moduleSubTypes = res.data.data
+            this.subTypeId = this.type.showSubTypeAll === '1' ? null :
+                this.moduleSubTypes.length > 0 ? this.moduleSubTypes[0].id : null;
             axios.post('/module/list', {
               typeId: this.type.id,
+              subTypeId: this.subTypeId,
               pageLength: 12
             }).then(res => {
               if (res.status === 200 && res.data.success === true) {
@@ -117,12 +123,6 @@ export default {
   },
 
   methods: {
-    async loadModuleTypeDetail(path) {
-      let res = await axios.get('/module_type/detail_by_path/' + path)
-      if (res.status === 200 && res.data.success === true) {
-        this.type = res.data.data
-      }
-    },
     async loadModules(subTypeId, pageIndex) {
       this.subTypeId = subTypeId
       this.pageIndex = pageIndex
