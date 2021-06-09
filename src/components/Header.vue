@@ -2,7 +2,7 @@
   <div id="menu">
     <div class="logo-container">
       <router-link :to="{name: 'Home'}">
-        <el-image style="width: 100%; height: 100%; margin-left: 60px;" object-fit="cover" :src="'/images/logo/logo.jpeg'" />
+        <el-image style="width: 100%; height: 100%; margin-left: 60px;" object-fit="cover" :src="'/images/logo/logo.svg'" />
       </router-link>
     </div>
     <div class="menu-container">
