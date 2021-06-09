@@ -1,16 +1,16 @@
 <template>
-  <div id="footer">
+  <div id="footer" v-if="company !== null">
     <el-row>
       <el-col :offset="6" :span="12">
         <div id="footer-company">
-          <span>{{company}}</span>
+          <span>{{company.name }}</span>
         </div>
       </el-col>
     </el-row>
     <el-row>
       <el-col :offset="6" :span="12">
-        <div id="footer-contact" v-for="(contact, index) in contacts" :key="index">
-          <span>{{contact}}</span>
+        <div id="footer-contact" v-for="(contact, index) in company.contacts[0].items" :key="index">
+          <span>{{contact.name }}: {{ contact.value }}</span>
         </div>
       </el-col>
     </el-row>
@@ -23,22 +23,23 @@ import axios from "axios";
 export default {
   name: "Footer",
 
+  mounted() {
+    this.loadPrimaryCompany()
+  },
+
   data() {
     return {
-      company: "上海狗狗农商银行",
-      contacts: [
-        "邮箱：10000000@11.com",
-        "手机：18526325350",
-        "地址：上海市嘉定区祁连山南路2345号"
-      ]
+      companies: [],
+      company: null
     }
   },
 
   methods: {
     loadPrimaryCompany() {
-      axios.get('/banner/list').then(res => {
+      axios.get('/company/list').then(res => {
         if (res.status === 200 && res.data.success === true) {
-          this.banners = res.data.data
+          const companies = res.data.data
+          this.company = companies.length > 0 ? companies.filter(o => o.isPrimary === '1')[0] : null
         }
       })
     }

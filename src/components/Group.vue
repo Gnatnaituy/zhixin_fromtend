@@ -6,8 +6,10 @@
     </div>
 
     <el-row :gutter="20">
-      <el-col :span="8" v-for="(module, key) in modules" :key="key">
-        <component-module-card v-bind:moduleCard="module"/>
+      <el-col :span="8" v-for="(module, index) in modules" :key="index">
+        <router-link :to="'/' + module.typePath + '/' + module.subTypeId + '/' + module.id">
+          <component-module-card v-bind:moduleCard="module"/>
+        </router-link>
       </el-col>
     </el-row>
 

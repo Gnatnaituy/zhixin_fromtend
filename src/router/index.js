@@ -7,6 +7,7 @@ import ContactUs from "../views/ContactUs"
 Vue.use(Router)
 
 const router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',

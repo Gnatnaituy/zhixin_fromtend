@@ -8,7 +8,7 @@ module.exports = {
   dev: {
 
     // Paths
-    assetsSubDirectory: 'static',
+    assetsSubDirectory: './',
     assetsPublicPath: '/',
     // Proxy 'localhost:8080' to 'http://localhost:9005
     proxyTable: {
@@ -52,7 +52,7 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'static',
+    assetsSubDirectory: './',
     /**
      *	可以将 build 的路径前缀修改为 ' ./ '（原本为 ' / '），是因为打包之后，外部引入 js 和 css 文件时，如果路
 		 *	径以 ' / ' 开头，那么在本地是无法找到对应文件。所以如果需要在本地打开打包后的文件，
