@@ -10,10 +10,10 @@
         </el-col>
       </el-row>
     </div>
-    <div id="company-location">
+    <div id="company-location" v-if="company.location !== null && company.location !== ''">
       <span>地址: {{ company.location }}</span>
     </div>
-    <div id="company-map">
+    <div id="company-map" v-if="company.lat !== null && company.lng !== null">
       <el-amap class="amap-box" :zoom="zoom" :center="[company.lng, company.lat]">
         <el-amap-marker :position="[company.lng, company.lat]" clickable></el-amap-marker>
       </el-amap>

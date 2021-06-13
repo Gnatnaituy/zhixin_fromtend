@@ -37,8 +37,7 @@ export default {
    display: inline-block;
  }
  #items {
-   padding-left: 30%;
-   text-align: left;
+   text-align: center;
    font-size: 14px;
  }
  #item {

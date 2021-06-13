@@ -7,7 +7,7 @@
     </div>
     <el-row>
       <el-col :offset="4" :span="4">
-        <div id="sub-type">
+        <div class="sub-type">
           <div>
             <a :class="{ active: activeIndex === 0 }" v-on:click="loadCompanies" >
               联系方式
@@ -28,15 +28,25 @@
       </el-col>
 
       <el-col :span="12">
-        <div v-if="activeIndex === 0" id="container-contact">
-          <div id="container-company" v-for="(company, index) in companies" :key="index">
-            <component-company v-bind:company="company" v-bind:contacts="company.contacts" />
-            <div v-if="index !== companies.length - 1" id="company-divider">
+        <div v-if="activeIndex === 0 && companies !== undefined && companies.length > 0"
+             class="contact-container">
+          <div class="contact-item" v-for="(item, index) in companies" :key="index">
+            <component-company v-bind:company="item" v-bind:contacts="item.contacts" />
+            <div v-if="index !== companies.length - 1" class="item-divider">
               <el-divider/>
             </div>
           </div>
         </div>
-        <div v-else class="module-none">
+        <div v-if="activeIndex === 1 && jobs !== undefined && jobs.length > 0"
+             class="contact-container">
+          <div class="contact-item" v-for="(item, index) in jobs" :key="index">
+            <component-job v-bind:job="item" />
+            <div v-if="index !== jobs.length - 1" class="item-divider">
+              <el-divider/>
+            </div>
+          </div>
+        </div>
+        <div v-else class="empty-content">
           <el-row>
             <el-col :offset="7" :span="17">
               <div>
@@ -53,6 +63,7 @@
 <script>
 import Header from "../components/Header"
 import Company from "../components/Company"
+import Job from "../components/Job";
 import PageHeader from "../components/PageHeader"
 import axios from "axios";
 
@@ -62,6 +73,7 @@ export default {
   components: {
     "component-header": Header,
     "component-company": Company,
+    "component-job": Job,
     "component-page-header": PageHeader
   },
 
@@ -73,7 +85,7 @@ export default {
     return {
       activeIndex: 0,
       companies: [],
-      jobs: null
+      jobs: []
     }
   },
 
@@ -88,9 +100,12 @@ export default {
     },
     loadJobs() {
       this.activeIndex = 1
-      axios.get('/company/list').then(res => {
+      axios.post('/job/list', {
+        pageStart: 0,
+        pageLength: 10
+      }).then(res => {
         if (res.status === 200 && res.data.success === true) {
-          this.companies = res.data.data
+          this.jobs = res.data.data.records
         }
       })
     }
@@ -99,25 +114,25 @@ export default {
 </script>
 
 <style scoped>
- #container-contact {
+ .contact-container {
    padding-top: 30px;
  }
-  #container-company {
+  .contact-item {
     text-align: center;
   }
-  #company-divider {
-    width: 66%;
-    display: inline-block;
-  }
- #sub-type {
+ .sub-type {
    margin-top: 60px;
    font-size: 14px;
+ }
+ .item-divider {
+   width: 66%;
+   display: inline-block;
  }
  .sub-type-divider {
    width: 85%;
    margin-top: -15px;
  }
- .module-none {
+ .empty-content {
    color: #9b9b9b;
    padding: 100px 0;
    text-align: left;
