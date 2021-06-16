@@ -16,12 +16,6 @@
         </el-breadcrumb-item>
       </el-breadcrumb>
     </div>
-    <div v-if="showInfo" class="module-title">
-      {{ module.title }}
-    </div>
-    <div v-if="showInfo" class="module-time">
-      {{ formatTime(module.createTimestamp) }}
-    </div>
     <div class="module-content">
       <div v-html="module.content"></div>
     </div>

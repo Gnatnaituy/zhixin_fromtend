@@ -37,7 +37,7 @@
             </div>
           </div>
         </div>
-        <div v-if="activeIndex === 1 && jobs !== undefined && jobs.length > 0"
+        <div v-else-if="activeIndex === 1 && jobs !== undefined && jobs.length > 0"
              class="contact-container">
           <div class="contact-item" v-for="(item, index) in jobs" :key="index">
             <component-job v-bind:job="item" />

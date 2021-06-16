@@ -7,18 +7,21 @@
     <el-row>
       <component-footer />
     </el-row>
+    <component-license />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header"
 import Footer from "./components/Footer"
+import License from "./components/License";
 
 export default {
 
   components: {
     "component-header": Header,
-    "component-footer": Footer
+    "component-footer": Footer,
+    "component-license": License,
   },
 
   created() {

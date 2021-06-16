@@ -1,14 +1,14 @@
 <template>
   <div id="footer" v-if="company !== null">
     <el-row>
-      <el-col :offset="6" :span="12">
+      <el-col :offset="5" :span="12">
         <div id="footer-company">
           <span>{{company.name }}</span>
         </div>
       </el-col>
     </el-row>
     <el-row>
-      <el-col :offset="6" :span="12">
+      <el-col :offset="5" :span="12">
         <div id="footer-contact" v-for="(contact, index) in company.contacts[0].items" :key="index">
           <span>{{contact.name }}: {{ contact.value }}</span>
         </div>
