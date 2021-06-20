@@ -21,7 +21,7 @@ export default {
 
   mounted() {
     this.loadBanners()
-    this.bannerHeight = window.innerHeight - 60;
+    this.bannerHeight = 400;
   },
 
   methods: {

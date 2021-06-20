@@ -1,25 +1,18 @@
 <template>
-  <div id="module">
-    <div id="module-image">
-      <el-image :src="moduleCard.cover" />
+  <div class="module">
+    <div class="module-image">
+      <el-image style="height: 250px;" :src="moduleCard.cover" />
     </div>
     <el-row>
-      <el-col :span="18">
-        <div id="module-footer">
-          <div id="module-name">
-            <span>{{ moduleCard.title }}</span>
+      <el-col :span="24">
+        <div class="module-footer">
+          <div class="module-name">
+            <p class="module-title">{{ moduleCard.title }}</p>
           </div>
-          <div id="module-description">
-            <span>{{ moduleCard.description }}</span>
-          </div>
+<!--          <div id="module-description">-->
+<!--            <p>{{ moduleCard.description }}</p>-->
+<!--          </div>-->
         </div>
-      </el-col>
-      <el-col :span="6">
-        <el-row>
-          <el-col :offset="8" :span="8">
-            <i class="el-icon-right" style="font-weight: bold; padding-top: 20px; color: #9b9b9b"/>
-          </el-col>
-        </el-row>
       </el-col>
     </el-row>
   </div>
@@ -46,23 +39,28 @@ export default {
 </script>
 
 <style scoped>
-  #module {
+  .module {
     background-color: #ffffff;
     border-bottom: 1px #d9d9d9 solid;
     margin-top: 20px;
   }
-  #module-image {
+  .module-image {
     width: 100%;
-    height: auto;
     background-size: cover;
     overflow: hidden;
   }
-  #module-footer {
-    padding: 8px 16px;
+  .module-footer {
+    padding: 10px 16px;
   }
-  #module-name {
+  .module-name {
     font-size: 16px;
     color: #515151;
+  }
+  .module-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
   }
   #module-description {
     font-size: 13px;

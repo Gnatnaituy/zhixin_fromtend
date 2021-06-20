@@ -1,9 +1,8 @@
 <template>
   <div>
     <div>
-      <el-image style="width: 100%; height: 400px;" object-fit="cover"
-        :src="'/images/2021/5/8b5c3f78eb8e41d8beb5d83692c4442b-t01e4c1a6fad8c7be4b.jpg'" />
-      <component-page-header title="联系我们" />
+      <el-image style="width: 100%; height: 400px;" object-fit="cover" :src="'/images/contact/contact.jpg'" />
+<!--      <component-page-header title="联系我们" />-->
     </div>
     <el-row>
       <el-col :offset="4" :span="4">
