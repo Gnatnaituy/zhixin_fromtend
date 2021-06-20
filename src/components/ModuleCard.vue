@@ -1,7 +1,7 @@
 <template>
   <div class="module">
-    <div class="module-image">
-      <el-image style="height: 250px;" :src="moduleCard.cover" />
+    <div class="module-image" ref="ref-module-image">
+      <el-image :style="{height: imageHeight + 'px'}" :src="moduleCard.cover" />
     </div>
     <el-row>
       <el-col :span="24">
@@ -24,8 +24,14 @@ export default {
 
   data() {
     return {
+      imageHeight: 250,
       currentDate: new Date()
     };
+  },
+
+  mounted() {
+    let moduleImageWidth = window.getComputedStyle(this.$refs["ref-module-image"]).width.slice(0, -2);
+    this.imageHeight = moduleImageWidth / 9 * 5;
   },
 
   props: {
