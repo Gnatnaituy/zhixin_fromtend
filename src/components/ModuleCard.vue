@@ -59,7 +59,7 @@ export default {
     padding: 10px 16px;
   }
   .module-name {
-    font-size: 16px;
+    font-size: 14px;
     color: #515151;
   }
   .module-title {
