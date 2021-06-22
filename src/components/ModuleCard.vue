@@ -63,6 +63,7 @@ export default {
     color: #515151;
   }
   .module-title {
+    line-height: 16px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
