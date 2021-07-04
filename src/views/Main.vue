@@ -2,8 +2,8 @@
   <div id="main">
     <div>
       <el-image style="width: 100%; height: 400px;" object-fit="cover"
+                v-if="moduleType.background !== undefined"
                 :src="moduleType.background" />
-<!--      <component-page-header v-bind:title="moduleType.name"/>-->
     </div>
     <div>
       <component-main-page />

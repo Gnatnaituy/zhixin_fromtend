@@ -3,6 +3,11 @@
 
     <div id="group-header">
       <span>{{ typeName }}</span>
+      <div class="type-more">
+        <router-link :to="'/' + typePath">
+          更多 >>
+        </router-link>
+      </div>
     </div>
 
     <el-row :gutter="20">
@@ -28,6 +33,7 @@ export default {
 
   props: {
     typeName: {},
+    typePath: '',
     modules: []
   }
 }
@@ -38,5 +44,14 @@ export default {
     margin-top: 60px;
     font-size: 24px;
     color: #515151;
+  }
+  .type-more {
+    font-size: 14px;
+    text-align: right;
+    margin-top: -30px;
+  }
+  a {
+   text-decoration: none;
+   color: #515151;
   }
 </style>

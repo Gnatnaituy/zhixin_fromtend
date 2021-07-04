@@ -7,6 +7,7 @@
       <el-col :offset="3" :span="18">
         <component-group v-for="(type, index) in typeModules" :key="index"
                          v-bind:type-name="type.name"
+                         v-bind:type-path="type.path"
                          v-bind:modules="type.modules" />
       </el-col>
     </el-row>
