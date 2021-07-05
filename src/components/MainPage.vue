@@ -2,7 +2,7 @@
   <div id="main-page">
     <el-row>
       <el-col v-if="!showModule" :offset="4" :span="4">
-        <div id="sub-type">
+        <div class="sub-type">
           <div v-if="type.showSubTypeAll === '1'">
             <a :class="{ active: subType.id === undefined }"
                v-on:click="loadModules({}, 1)" >
@@ -193,7 +193,7 @@ export default {
  #main-page {
    margin-top: 40px;
  }
- #sub-type {
+ .sub-type {
    margin-top: 20px;
    font-size: 14px;
  }
@@ -219,5 +219,4 @@ export default {
    text-decoration: none;
    color: #515151;
  }
-
 </style>

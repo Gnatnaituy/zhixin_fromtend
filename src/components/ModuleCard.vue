@@ -1,5 +1,5 @@
 <template>
-  <div class="module">
+  <div id="module">
     <div class="module-image" ref="ref-module-image">
       <el-image :style="{height: imageHeight + 'px'}" :src="moduleCard.cover" />
     </div>
@@ -7,11 +7,8 @@
       <el-col :span="24">
         <div class="module-footer">
           <div class="module-name">
-            <p class="module-title">{{ moduleCard.title }}</p>
+            <p id="module-title">{{ moduleCard.title }}</p>
           </div>
-<!--          <div id="module-description">-->
-<!--            <p>{{ moduleCard.description }}</p>-->
-<!--          </div>-->
         </div>
       </el-col>
     </el-row>
@@ -24,8 +21,7 @@ export default {
 
   data() {
     return {
-      imageHeight: 250,
-      currentDate: new Date()
+      imageHeight: 250
     };
   },
 
@@ -37,18 +33,32 @@ export default {
   props: {
     moduleCard: {
       cover: "",
-      title: "",
-      description: ""
+      title: ""
     }
   }
 }
 </script>
 
 <style scoped>
-  .module {
+  #module {
+    transition: transform .3s ease-in-out, 
+                box-shadow .3s cubic-bezier(.47, 0, .745, .715), 
+                border .3s linear .3s;
+    margin-top: 20px;
     background-color: #ffffff;
     border-bottom: 1px #d9d9d9 solid;
-    margin-top: 20px;
+  }
+  #module:hover {
+    box-shadow: 0 16px 16px rgba(34, 34, 34, 0.25);
+    -webkit-transform: translateY(-1px);
+    -moz-transform: translateY(-1px);
+    transform: translateY(-1px);
+    margin-top: 4px;
+  }
+
+  #module:hover #module-title {
+    height: 32px;
+    white-space: normal;
   }
   .module-image {
     width: 100%;
@@ -62,16 +72,12 @@ export default {
     font-size: 14px;
     color: #515151;
   }
-  .module-title {
+  #module-title {
     line-height: 16px;
+    height: 16px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     -ms-text-overflow: ellipsis;
-  }
-  #module-description {
-    font-size: 13px;
-    color: #808080;
-    margin-top: 2px;
   }
 </style>

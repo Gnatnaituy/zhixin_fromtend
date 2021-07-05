@@ -45,10 +45,19 @@ export default {
     font-weight: 400;
   }
 
+  #app {
+    min-width: 1200px;
+    transform: scale(1.1);
+   transform-origin: 0 0;
+  }
+
   a {
       cursor: pointer;
       text-decoration: none;
       transition: none 86ms ease-out;
+  }
+  a:hover {
+    color: #272727;
   }
 
   html{height:100%;}

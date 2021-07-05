@@ -4,8 +4,9 @@
       <component-banner />
     </el-row>
     <el-row>
-      <el-col :offset="3" :span="18">
-        <component-group v-for="(type, index) in typeModules" :key="index"
+      <el-col :offset="5" :span="14">
+        <component-group v-for="(type, index) in types" :key="index"
+                         v-bind:layout="type.homePageLayout"
                          v-bind:type-name="type.name"
                          v-bind:type-path="type.path"
                          v-bind:modules="type.modules" />
@@ -34,7 +35,7 @@ export default {
 
   data() {
     return {
-      typeModules: []
+      types: []
     }
   },
 
@@ -42,7 +43,7 @@ export default {
     loadGroups() {
       axios.get('/module_type/list/in-home').then(res => {
         if (res.status === 200 && res.data.success === true) {
-          this.typeModules = res.data.data
+          this.types = res.data.data
         }
       })
     }
