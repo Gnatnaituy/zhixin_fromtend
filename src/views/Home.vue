@@ -16,7 +16,6 @@
 </template>
 
 <script>
-
 import Banner from "../components/Banner"
 import Group from "../components/Group"
 import axios from "axios";
@@ -50,7 +49,3 @@ export default {
   }
 };
 </script>
-
-<style>
-
-</style>

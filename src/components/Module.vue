@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import {formatTime} from '../utils/time'
 
 export default {
   name: "Module",
@@ -33,12 +32,6 @@ export default {
     subType: {},
     module: {},
     showInfo: false
-  },
-
-  methods: {
-    formatTime(time) {
-      return formatTime(time)
-    }
   }
 }
 </script>

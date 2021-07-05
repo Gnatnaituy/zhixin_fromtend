@@ -2,7 +2,6 @@
   <div>
     <div>
       <el-image style="width: 100%; height: 400px;" object-fit="cover" :src="'/images/contact/contact.jpg'" />
-<!--      <component-page-header title="联系我们" />-->
     </div>
     <el-row>
       <el-col :offset="4" :span="4">
