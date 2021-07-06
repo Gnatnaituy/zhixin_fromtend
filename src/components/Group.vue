@@ -22,7 +22,7 @@
       <el-col :offset="1" :span="9">
         <router-link :to="'/' + modules[0].typePath + '/' + modules[0].subTypeId + '/' + modules[0].id">
           <div class="module-image">
-            <el-image style="height:220px" fit="fill" :src="modules[0].cover" />
+            <el-image style="height:200px" fit="fill" :src="modules[0].cover" />
             <div class="module-image-alt">
               <p class="module-link-title"> {{ modules[0].title }} </p>
               <p class="module-link-date"> {{ formatTime(modules[0].createTimestamp) }} </p>
@@ -142,6 +142,7 @@ export default {
   }
   .type-more {
     font-size: 14px;
+    line-height: 14px;
     text-align: right;
     margin-top: -30px;
   }

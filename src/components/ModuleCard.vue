@@ -1,7 +1,7 @@
 <template>
   <div id="module">
     <div class="module-image" ref="ref-module-image">
-      <el-image :style="{height: imageHeight + 'px'}" :src="moduleCard.cover" />
+      <el-image :style="{height: imageHeight + 'px'}" :src="moduleCard.cover" object-fit="fill" />
     </div>
     <el-row>
       <el-col :span="24">
@@ -44,7 +44,7 @@ export default {
     transition: transform .3s ease-in-out, 
                 box-shadow .3s cubic-bezier(.47, 0, .745, .715), 
                 border .3s linear .3s;
-    margin-top: 20px;
+    margin-top: 24px;
     background-color: #ffffff;
     border-bottom: 1px #d9d9d9 solid;
   }
@@ -53,7 +53,7 @@ export default {
     -webkit-transform: translateY(-1px);
     -moz-transform: translateY(-1px);
     transform: translateY(-1px);
-    margin-top: 4px;
+    margin-top: 8px;
   }
 
   #module:hover #module-title {
